@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backstage-config
+  namespace: platform
+data:
+  app-config.yaml: |
+    app:
+      title: "Internal Developer Platform"
+      baseUrl: http://localhost:7000
+    backend:
+      baseUrl: http://localhost:7000/api
+    scaffolder:
+      templateLocations:
+        - ./scaffolder-templates
