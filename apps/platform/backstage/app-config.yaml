@@ -1,0 +1,10 @@
+app:
+  title: "Internal Developer Platform"
+  baseUrl: http://localhost:7000
+
+backend:
+  baseUrl: http://localhost:7000/api
+
+scaffolder:
+  templateLocations:
+    - ./scaffolder-templates
