@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: team-a
+  namespace: argocd
+spec:
+  description: Project for Team A services
+  sourceRepos:
+    - https://github.com/sajjadkhan12/idp-infra.git
+    - https://github.com/sajjadkhan12/team-a-services.git
+  destinations:
+    - namespace: team-a
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
