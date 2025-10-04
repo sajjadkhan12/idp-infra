@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: backstage
-        image: ghcr.io/backstage/backstage:latest
+        image: roadiehq/community-backstage-image:latest
         ports:
         - containerPort: 7000
