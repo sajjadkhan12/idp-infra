@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform
+  namespace: argocd
+spec:
+  description: Project for platform services (Backstage)
+  sourceRepos:
+    - https://github.com/sajjadkhan12/idp-infra.git
+  destinations:
+    - namespace: platform
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
