@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-service
+  description: Payment microservice for Team A
+spec:
+  type: service
+  lifecycle: production
+  owner: team-a
+  implementsApis:
+    - payment-api
+  system: team-a-system
+  links:
+    - url: https://github.com/sajjadkhan12/idp-infra/tree/main/apps/team-a/payment-service
+      description: Git repo

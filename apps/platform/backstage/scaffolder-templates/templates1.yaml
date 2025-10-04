@@ -1,0 +1,24 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: microservice-template
+  title: New Microservice
+  description: Scaffold a new microservice for Team A
+spec:
+  owner: team-a
+  type: service
+  steps:
+    - id: fetch
+      name: Fetch Template
+      action: fetch:template
+      input:
+        url: ./templates/microservice
+        targetPath: ./services/{{ parameters.name }}
+    - id: commit
+      name: Commit to Git
+      action: git:commit
+      input:
+        repoUrl: https://github.com/sajjadkhan12/idp-infra.git
+        branch: main
+        commitMessage: "Add new microservice {{ parameters.name }}"
+        targetPath: apps/team-a/{{ parameters.name }}
