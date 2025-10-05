@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backstage-templates
+  namespace: platform
+data:
+  microservice-template.yaml: |
+    apiVersion: scaffolder.backstage.io/v1beta3
+    kind: Template
+    metadata:
+      name: new-microservice
+      title: New Microservice
+      description: Scaffold a new microservice for Team A
+    spec:
+      owner: team-a
+      type: service
+      parameters:
+        - title: Service Name
+          properties:
+            name:
+              type: string
+              title: Name of the service
+      steps:
+        - id: fetch
+          name: Fetch Template
+          action: fetch:template
+          input:
+            url: ./templates/microservice
+            targetPath: ./services/{{ parameters.name }}
+        - id: publish
+          name: Commit to Git
+          action: publish:github
+          input:
+            repoUrl: github.com/sajjadkhan12/idp-infra
+            branch: main
+            commitMessage: "Add new microservice {{ parameters.name }}"
+            targetPath: apps/team-a/{{ parameters.name }}
